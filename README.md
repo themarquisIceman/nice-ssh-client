@@ -4,7 +4,7 @@ A modern SSH client with a beautiful GUI, similar to Termius. Features include t
 
 ## Demo
 
-https://github.com/themarquisIceman/nice-ssh-client/blob/main/delete-me.mp4
+<video src="https://github.com/themarquisIceman/nice-ssh-client/raw/main/delete-me.mp4" controls></video>
 
 ## Features
 
