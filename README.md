@@ -2,6 +2,10 @@
 
 A modern SSH client with a beautiful GUI, similar to Termius. Features include terminal access and SFTP file management.
 
+## Demo
+
+https://github.com/user-attachments/assets/delete-me.mkv
+
 ## Features
 
 - **SSH Terminal**: Full-featured terminal with xterm.js
