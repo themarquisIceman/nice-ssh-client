@@ -1,0 +1,189 @@
+.welcome-screen {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+}
+
+.welcome-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 40px;
+}
+
+.welcome-logo {
+  margin-bottom: 24px;
+  color: var(--accent-primary);
+}
+
+.welcome-content h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.welcome-content > p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.quick-actions {
+  margin-bottom: 48px;
+}
+
+.primary-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(122, 162, 247, 0.3);
+  transition: all var(--transition-fast);
+}
+
+.primary-action:hover {
+  background: #6a8fd8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(122, 162, 247, 0.4);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-fast);
+}
+
+.feature:hover {
+  border-color: var(--border-light);
+}
+
+.feature svg {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.feature p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Connecting state */
+.connecting-state {
+  animation: fadeIn 0.3s ease;
+}
+
+.connecting-animation {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connecting-animation svg {
+  color: var(--accent-primary);
+  z-index: 1;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  animation: pulseRing 1.5s infinite;
+}
+
+.pulse-ring.delay {
+  animation-delay: 0.5s;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.connecting-state h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.connecting-state p {
+  color: var(--text-muted);
+}
+
+/* Error state */
+.error-state {
+  animation: fadeIn 0.3s ease;
+}
+
+.error-icon {
+  margin-bottom: 24px;
+  color: var(--accent-danger);
+}
+
+.error-state h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.error-message {
+  color: var(--accent-danger);
+  background: rgba(247, 118, 142, 0.1);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.error-state button {
+  padding: 10px 24px;
+  background: var(--accent-primary);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error-state button:hover {
+  background: #6a8fd8;
+}

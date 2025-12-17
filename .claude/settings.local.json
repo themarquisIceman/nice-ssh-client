@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "Bash(dir:*)",
+      "Bash(del \"\\?\\E:\\coding-folders\\nice-ssh-client\\nul\")",
+      "Bash(rm:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

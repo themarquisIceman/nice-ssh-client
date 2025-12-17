@@ -1,0 +1,494 @@
+.tunnel-manager-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tunnel-manager-modal {
+  width: 700px;
+  max-width: 95vw;
+  max-height: 85vh;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tunnel-manager-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.header-title svg {
+  color: var(--accent-primary);
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.close-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.tunnel-manager-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Create Tunnel Section */
+.create-tunnel-section h3,
+.active-tunnels-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px 0;
+}
+
+.tunnel-count {
+  padding: 2px 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.no-servers-warning {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  background: rgba(224, 175, 104, 0.1);
+  border: 1px solid rgba(224, 175, 104, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--accent-warning);
+  font-size: 13px;
+}
+
+.tunnel-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-group select {
+  padding: 10px 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.form-group select:focus {
+  border-color: var(--accent-primary);
+}
+
+.type-toggle {
+  display: flex;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.type-toggle button {
+  flex: 1;
+  padding: 10px 16px;
+  background: var(--bg-tertiary);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.type-toggle button:first-child {
+  border-right: 1px solid var(--border-color);
+}
+
+.type-toggle button:hover {
+  background: var(--bg-hover);
+}
+
+.type-toggle button.active {
+  background: var(--accent-primary);
+  color: white;
+}
+
+/* Tunnel Visual */
+.tunnel-visual {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+.tunnel-endpoint {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.endpoint-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.endpoint-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.endpoint-inputs input {
+  flex: 1;
+  padding: 8px 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  outline: none;
+}
+
+.endpoint-inputs input:focus {
+  border-color: var(--accent-primary);
+}
+
+.endpoint-inputs input[type="number"] {
+  width: 80px;
+  flex: 0;
+}
+
+.endpoint-inputs span {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.tunnel-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+.tunnel-arrow span {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tunnel-description {
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.tunnel-description p {
+  margin: 0;
+}
+
+.tunnel-description code {
+  padding: 2px 6px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent-primary);
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(247, 118, 142, 0.1);
+  border: 1px solid rgba(247, 118, 142, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--accent-danger);
+  font-size: 13px;
+}
+
+.create-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--accent-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.create-btn:hover:not(:disabled) {
+  background: #6a8fd8;
+}
+
+.create-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.create-btn .spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Active Tunnels Section */
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.no-tunnels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.no-tunnels svg {
+  opacity: 0.5;
+}
+
+.no-tunnels span {
+  font-size: 13px;
+}
+
+.tunnels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tunnel-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+}
+
+.tunnel-item:hover {
+  border-color: var(--border-light);
+}
+
+.tunnel-item.local {
+  border-left: 3px solid var(--accent-primary);
+}
+
+.tunnel-item.remote {
+  border-left: 3px solid var(--accent-success);
+}
+
+.tunnel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tunnel-type {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.type-badge {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.type-badge.local {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.type-badge.remote {
+  background: var(--accent-success);
+  color: white;
+}
+
+.server-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.tunnel-route {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tunnel-route .endpoint {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.tunnel-route svg {
+  color: var(--text-muted);
+}
+
+.tunnel-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.status-badge.active {
+  background: rgba(158, 206, 106, 0.2);
+  color: var(--accent-success);
+}
+
+.status-badge.error {
+  background: rgba(247, 118, 142, 0.2);
+  color: var(--accent-danger);
+}
+
+.close-tunnel-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.close-tunnel-btn:hover {
+  background: var(--accent-danger);
+  color: white;
+}

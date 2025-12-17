@@ -1,0 +1,166 @@
+.split-terminal-root {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Layout layer contains pane headers, borders, and resize handles */
+.split-layout-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Re-enable pointer events for interactive elements */
+.split-layout-layer .pane-header,
+.split-layout-layer .split-handle {
+  pointer-events: auto;
+}
+
+/* Terminals layer - rendered flat to prevent remounting */
+.split-terminals-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.terminal-wrapper {
+  position: absolute;
+  padding-top: 28px; /* Height of pane-header */
+  box-sizing: border-box;
+}
+
+.terminal-wrapper .terminal-container {
+  height: 100%;
+}
+
+.split-layout-layer > .split-container,
+.split-layout-layer > .split-pane {
+  width: 100%;
+  height: 100%;
+}
+
+.split-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.split-container.horizontal {
+  flex-direction: row;
+}
+
+.split-container.vertical {
+  flex-direction: column;
+}
+
+.split-child {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.split-handle {
+  background: var(--border-color);
+  flex-shrink: 0;
+  transition: background var(--transition-fast);
+}
+
+.split-handle.horizontal {
+  width: 4px;
+  cursor: col-resize;
+}
+
+.split-handle.vertical {
+  height: 4px;
+  cursor: row-resize;
+}
+
+.split-handle:hover,
+.split-handle:active {
+  background: var(--accent-primary);
+}
+
+.split-pane {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color var(--transition-fast);
+}
+
+.split-pane.active {
+  border-color: var(--accent-primary);
+}
+
+.pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  min-height: 28px;
+}
+
+.pane-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.pane-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.pane-action {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pane-action:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.pane-action.close:hover {
+  background: var(--accent-danger);
+  color: white;
+}
+
+.pane-content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Make sure the terminal fills the pane content */
+.pane-content .terminal-container {
+  height: calc(100% - 150px);
+}
